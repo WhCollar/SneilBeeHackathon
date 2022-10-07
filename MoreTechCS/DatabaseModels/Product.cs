@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace;
+﻿namespace MoreTechCS.DatabaseModels;
 
 public class Product
 {

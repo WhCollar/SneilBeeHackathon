@@ -565,16 +565,6 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
-      },
-      "MarketplaceDataLibrary/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/MarketplaceDataLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MarketplaceDataLibrary.dll": {}
-        }
       }
     }
   },
@@ -1450,17 +1440,12 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "MarketplaceDataLibrary/1.0.0": {
-      "type": "project",
-      "path": "../MarketplaceDataLibrary/MarketplaceDataLibrary.csproj",
-      "msbuildProject": "../MarketplaceDataLibrary/MarketplaceDataLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper >= 12.0.0",
-      "MarketplaceDataLibrary >= 1.0.0",
+      "D:\\RiderProjects\\SneilBeeHackathon\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj",
       "Microsoft.EntityFrameworkCore >= 7.0.0-rc.1.22426.7",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0-rc.1.22426.7",
       "Newtonsoft.Json >= 13.0.1",
@@ -1476,11 +1461,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RiderProjects\\SneilBeeHackathon\\Marketplace\\MoreTechCS\\MoreTechCS.csproj",
+      "projectUniqueName": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\MoreTechCS.csproj",
       "projectName": "MoreTechCS",
-      "projectPath": "D:\\RiderProjects\\SneilBeeHackathon\\Marketplace\\MoreTechCS\\MoreTechCS.csproj",
+      "projectPath": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\MoreTechCS.csproj",
       "packagesPath": "C:\\Users\\Qw1nt\\.nuget\\packages\\",
-      "outputPath": "D:\\RiderProjects\\SneilBeeHackathon\\Marketplace\\MoreTechCS\\obj\\",
+      "outputPath": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1500,8 +1485,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\RiderProjects\\SneilBeeHackathon\\Marketplace\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj": {
-              "projectPath": "D:\\RiderProjects\\SneilBeeHackathon\\Marketplace\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj"
+            "D:\\RiderProjects\\SneilBeeHackathon\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj": {
+              "projectPath": "D:\\RiderProjects\\SneilBeeHackathon\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj"
             }
           }
         }
@@ -1568,5 +1553,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.304\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'D:\\RiderProjects\\SneilBeeHackathon\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "D:\\RiderProjects\\SneilBeeHackathon\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

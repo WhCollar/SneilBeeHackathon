@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KelKZviWBCq+zzBEbfi8I7QkQC24ct5u62ki0FNufT1UVNDliIdgkHD5qba7wCFVLg0f2qXqKlhQzScDb4wbsA==",
-  "success": true,
-  "projectFilePath": "D:\\RiderProjects\\SneilBeeHackathon\\Marketplace\\MoreTechCS\\MoreTechCS.csproj",
+  "dgSpecHash": "DttWxNQKWaIX9b7zgce0Dl/jBoyVDFUSPdJRjP1eQtyjgqMrpxffR0aaHW0g8nzWCoiCXIT8wYUj6MFt2+v57A==",
+  "success": false,
+  "projectFilePath": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\MoreTechCS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Qw1nt\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Qw1nt\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -39,5 +39,15 @@
     "C:\\Users\\Qw1nt\\.nuget\\packages\\system.text.encodings.web\\7.0.0-rc.1.22426.10\\system.text.encodings.web.7.0.0-rc.1.22426.10.nupkg.sha512",
     "C:\\Users\\Qw1nt\\.nuget\\packages\\system.text.json\\7.0.0-rc.1.22426.10\\system.text.json.7.0.0-rc.1.22426.10.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'D:\\RiderProjects\\SneilBeeHackathon\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "D:\\RiderProjects\\SneilBeeHackathon\\MarketplaceDataLibrary\\MarketplaceDataLibrary.csproj",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

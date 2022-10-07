@@ -1,4 +1,4 @@
-﻿namespace MarketplaceDataLibrary;
+﻿namespace MoreTechCS.DatabaseModels;
 
 public class User
 {
