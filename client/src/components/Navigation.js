@@ -24,6 +24,7 @@ export default function Navigation() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -47,7 +48,7 @@ export default function Navigation() {
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: 6,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -114,7 +115,6 @@ export default function Navigation() {
             component="a"
             href="/"
             sx={{
-              mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
@@ -128,20 +128,23 @@ export default function Navigation() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button
+              color="secondary"
               onClick={() => navigate('/quests')}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{ my: 2, display: 'block' }}
             >
               Квесты
             </Button>
             <Button
+              color="secondary"
               onClick={() => navigate('/shop')}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{ my: 2, display: 'block' }}
             >
               Магазин
             </Button>
             <Button
+              color="secondary"
               onClick={() => navigate('/news')}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{ my: 2, display: 'block' }}
             >
               Новости
             </Button>

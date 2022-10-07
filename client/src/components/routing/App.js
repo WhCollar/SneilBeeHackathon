@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Provider } from "react-redux";
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from "../theme";
+import { theme } from "../../theme";
 import store from "../../store";
 import Main from "../Main";
 import Home from "../pages/Home";
