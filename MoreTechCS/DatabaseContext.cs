@@ -1,5 +1,4 @@
-﻿using MarketplaceDataLibrary;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MoreTechCS.DatabaseModels;
 
 namespace MoreTechCS;
