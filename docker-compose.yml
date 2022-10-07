@@ -6,26 +6,24 @@ services:
     image: nginx:latest
     command: '/bin/sh -c ''while :; do sleep 336h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
     depends_on:
-      - core_backend
+      - core
     volumes:
-      - ./docker/nginx/nginx.conf:/etc/nginx/sites-available/default.conf
-      - ./docker/nginx/certbot/conf:/etc/letsencrypt
-      - ./docker/nginx/certbot/www:/var/www/certbot
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - 80:80
     networks:
       - private-network
 
-  core_backend:
-    container_name: core_backend
-    image: backend:latest-full
+  core:
+    container_name: core
+    image: core:latest-full
     depends_on:
       - postgres
     env_file:
       - .env
     build:
       context: .
-      dockerfile: backend.Dockerfile
+      dockerfile: core.Dockerfile
     ports:
       - 8000:8000
     volumes:
