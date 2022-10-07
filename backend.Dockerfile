@@ -1,9 +1,9 @@
-FROM python:3.7-alpine as bigimage
+FROM python:3.10-alpine as bigimage
 COPY ./app ./app
 RUN apk add linux-headers g++ build-base libressl-dev libxslt-dev libgcrypt-dev musl-dev libffi-dev \
 libxml2 libxslt libc-dev
 RUN pip wheel --wheel-dir=/root/wheels -r ./app/requirements.txt
-FROM python:3.7-alpine as smallimage
+FROM python:3.10-alpine as smallimage
 COPY --from=bigimage /root/wheels /root/wheels
 COPY ./app ./app
 RUN pip install \

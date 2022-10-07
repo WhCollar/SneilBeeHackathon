@@ -1,0 +1,59 @@
+version: "3.8"
+services:
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    command: '/bin/sh -c ''while :; do sleep 336h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+    depends_on:
+      - backend
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/sites-available/default.conf
+      - ./docker/nginx/certbot/conf:/etc/letsencrypt
+      - ./docker/nginx/certbot/www:/var/www/certbot
+    ports:
+      - 80:80
+    networks:
+      - private-network
+
+  backend:
+    image: backend:latest-full
+    depends_on:
+      - db
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    ports:
+      - 8000
+    volumes:
+      - ./app:/app
+    networks:
+      - private-network
+
+  db:
+    image: postgres:12
+    volumes:
+      - ./docker/postgres/:/var/lib/postgresql/data/pgdata
+    env_file:
+      - .env
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      - private-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - private-network
+    logging:
+        driver: none
+
+networks:
+  private-network:
+    driver: bridge
