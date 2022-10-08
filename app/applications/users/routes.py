@@ -1,4 +1,4 @@
-from fastapi import BackgroundTasks
+from fastapi import BackgroundTasks, Response
 
 from app.core.auth.utils.contrib import get_current_active_superuser, send_new_account_email, get_current_active_user
 from app.core.auth.utils.password import get_password_hash
@@ -35,7 +35,7 @@ async def read_users(
 async def create_user(
     *,
     user_in: BaseUserCreate,
-    current_user: User = Depends(get_current_active_superuser),
+    # current_user: User = Depends(get_current_active_superuser),
     background_tasks: BackgroundTasks
 ):
     """
@@ -80,14 +80,26 @@ async def update_user_me(
     return current_user
 
 
-@router.get("/me", response_model=BaseUserOut, status_code=200, tags=['users'])
+# @router.get("/me", response_model=BaseUserOut, status_code=200, tags=['users'])
+# def read_user_me(
+#     current_user: User = Depends(get_current_active_user),
+# ):
+#     """
+#     Get current user.
+#     """
+#     return current_user
+
+
+@router.get("/me", status_code=200, tags=['users'])
 def read_user_me(
+    response: Response,
     current_user: User = Depends(get_current_active_user),
 ):
     """
     Get current user.
     """
-    return current_user
+    response.headers["User-Id"] = str(current_user.id)
+    pass
 
 
 @router.get("/{user_id}", response_model=BaseUserOut, status_code=200, tags=['users'])
