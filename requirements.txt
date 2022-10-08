@@ -94,3 +94,4 @@ XlsxWriter
 yarl
 zipp
 tortoise
+aiofiles

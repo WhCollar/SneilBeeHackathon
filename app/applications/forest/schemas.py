@@ -14,43 +14,34 @@ class BaseProperties(BaseModel):
         )
 
 
-class TaskStatus(str, Enum):
-    active = "Активна"
-    postponed = "Отложена"
-    finished = "Завершена"
-
-
-class BaseTask(BaseProperties):
+class BaseForest(BaseProperties):
     title: str
     description: str
     cost: float
     user_id: int
     supervisor_id: int
     badge_id: int
-    status: TaskStatus = TaskStatus.active
 
 
-class BaseTaskCreate(BaseProperties):
+class BaseForestCreate(BaseProperties):
     title: str
     description: str
     cost: float
     user_id: int
     supervisor_id: int
     badge_id: int
-    status: TaskStatus = TaskStatus.active
 
 
-class BaseTaskUpdate(BaseProperties):
+class BaseForestUpdate(BaseProperties):
     title: str
     description: str
     cost: float
     user_id: int
     supervisor_id: int
     badge_id: int
-    status: TaskStatus = TaskStatus.active
 
 
-class BaseTaskDB(BaseProperties):
+class BaseForestDB(BaseForest):
     id: int
     title: str
     description: str
@@ -58,13 +49,12 @@ class BaseTaskDB(BaseProperties):
     user_id: int
     supervisor_id: int
     badge_id: int
-    status: TaskStatus = TaskStatus.active
 
     class Config:
         orm_mode = True
 
 
-class BaseTaskOut(BaseTask):
+class BaseTaskOut(BaseForest):
     id: int
 
     class Config:

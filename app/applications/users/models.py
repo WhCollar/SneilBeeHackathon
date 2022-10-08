@@ -17,6 +17,7 @@ class User(BaseDBModel, BaseCreatedUpdatedAtModel, UUIDDBModel):
     password_hash = fields.CharField(max_length=128, null=True)
     public_wallet_key = fields.CharField(max_length=256)
     private_wallet_key = fields.CharField(max_length=256)
+    badge_id = fields.IntField()
     last_login = fields.DatetimeField(null=True)
     role = fields.CharField(max_length=256)
     is_active = fields.BooleanField(default=True)

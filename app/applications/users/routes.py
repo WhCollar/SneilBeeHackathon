@@ -1,3 +1,6 @@
+import json
+
+import aiohttp
 from fastapi import BackgroundTasks, Response
 
 from app.core.auth.utils.contrib import get_current_active_superuser, send_new_account_email, get_current_active_user
@@ -6,6 +9,7 @@ from app.core.blockchain.utils.wallet import create_wallet
 
 from app.applications.users.models import User
 from app.applications.users.schemas import BaseUserOut, BaseUserCreate, BaseUserUpdate
+from app.applications.users.schemas import UserRole
 
 from typing import List
 
@@ -59,6 +63,14 @@ async def create_user(
     db_user.private_wallet_key = wallet_keys.privateKey
 
     created_user = await User.create(db_user)
+    # user_data = json.dumps({
+    #     "universallyUniqueIdentifier": created_user.id,
+    #     "userRole": UserRole(created_user.role).name
+    # })
+    # async with aiohttp.ClientSession() as session:
+    #     url = f"{settings.BACKEND_DOMAIN}/UserRegistration"
+    #     async with session.post(url, headers={ "User-Data": }) as response:
+    #         return TransactionHash.parse_raw(await response.text())
 
     if settings.EMAILS_ENABLED and user_in.email:
         background_tasks.add_task(
@@ -94,7 +106,11 @@ def read_user_me(
     """
     Get current user.
     """
-    response.headers["User-Id"] = str(current_user.id)
+    user_data = json.dumps({
+        "universallyUniqueIdentifier": current_user.id,
+        "role": UserRole(current_user.role).name
+    })
+    response.headers["User-Data"] = user_data
     pass
 
 

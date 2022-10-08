@@ -3,14 +3,14 @@ from typing import Optional
 from tortoise import fields
 from tortoise.exceptions import DoesNotExist
 
-from app.applications.transaction_history.schemas import BaseTransactionCreate
+from app.applications.transaction_history.schemas import BaseTransaction
 from app.core.base.base_models import BaseCreatedUpdatedAtModel, BaseDBModel
 
 
 class TransactionHistory(BaseDBModel, BaseCreatedUpdatedAtModel):
 
-    sender = fields.ForeignKeyField("models.User")
-    recipient = fields.ForeignKeyField("models.User")
+    sender = fields.ForeignKeyField("models.User", related_name="sender")
+    recipient = fields.ForeignKeyField("models.User", related_name="recipient")
     amount = fields.FloatField()
     transaction_hash = fields.CharField(max_length=256)
     type = fields.CharField(max_length=50)
@@ -34,7 +34,7 @@ class TransactionHistory(BaseDBModel, BaseCreatedUpdatedAtModel):
             return None
 
     @classmethod
-    async def create_transaction_entry(cls, transaction: BaseTransactionCreate) -> "TransactionHistory":
+    async def create_transaction_entry(cls, transaction: BaseTransaction) -> "TransactionHistory":
         transaction_dict = transaction.dict()
         model = cls(**transaction_dict)
         await model.save()

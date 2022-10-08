@@ -37,35 +37,8 @@ class BaseTransaction(BaseProperties):
     status: TransactionType = None
 
 
-class BaseTransactionCreate(BaseProperties):
-    title: str
-    description: str
-    cost: float
-    user_id: int
-    supervisor_id: int
-    badge_id: int
-    status: TransactionType = None
-
-
-class BaseTransactionUpdate(BaseProperties):
-    title: str
-    description: str
-    cost: float
-    user_id: int
-    supervisor_id: int
-    badge_id: int
-    status: TransactionType = None
-
-
 class BaseTransactionDB(BaseTransaction):
     id: int
-    title: str
-    description: str
-    cost: float
-    user_id: int
-    supervisor_id: int
-    badge_id: int
-    status: TransactionType = None
 
     class Config:
         orm_mode = True
