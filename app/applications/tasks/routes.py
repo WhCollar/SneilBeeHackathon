@@ -41,7 +41,7 @@ async def create_task(
     db_task = BaseTaskCreate(
         **task_in.create_update_dict(),
     )
-    created_task = await Task.create(db_task)
+    created_task = await Task.create_task(db_task)
     return created_task
 
 
