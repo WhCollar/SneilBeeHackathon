@@ -5,7 +5,6 @@ from tortoise.exceptions import DoesNotExist
 
 from app.applications.tasks.schemas import BaseTaskCreate
 from app.core.base.base_models import BaseCreatedUpdatedAtModel, UUIDDBModel, BaseDBModel
-from app.core.auth.utils import password
 
 
 class Task(BaseDBModel, BaseCreatedUpdatedAtModel, UUIDDBModel):
@@ -16,6 +15,7 @@ class Task(BaseDBModel, BaseCreatedUpdatedAtModel, UUIDDBModel):
     user_id = fields.ForeignKeyField("models.User")
     supervisor_id = fields.ForeignKeyField("models.User")
     badge_id = fields.IntField(null=True)
+    status = fields.CharField(max_length=50)
 
     @classmethod
     async def get_by_id(cls, id: int) -> Optional["Task"]:
@@ -43,7 +43,4 @@ class Task(BaseDBModel, BaseCreatedUpdatedAtModel, UUIDDBModel):
         return model
 
     class Meta:
-        table = 'users'
-
-    class PydanticMeta:
-        computed = ["full_name"]
+        table = 'task'

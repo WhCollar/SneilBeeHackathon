@@ -1,17 +1,17 @@
 from fastapi import BackgroundTasks, Response
 
-from app.core.auth.utils.contrib import get_current_active_superuser, send_new_account_email, get_current_active_user
-from app.core.auth.utils.password import get_password_hash
-from app.core.blockchain.utils.wallet import create_wallet
+from app.core.auth.utils.contrib import get_current_active_user
+from app.core.blockchain.utils.transaction import send_ruble
+from app.core.blockchain.schemas import TransactionHash, SendRuble
 
 from app.applications.users.models import User
-from app.applications.users.schemas import BaseUserOut, BaseUserCreate, BaseUserUpdate
+from app.applications.users.schemas import UserRole
+from app.applications.tasks.models import Task
+from app.applications.tasks.schemas import BaseTaskCreate, BaseTaskOut, BaseTask, BaseTaskUpdate
 
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException
-
-from app.settings.config import settings
 
 import logging
 logger = logging.getLogger(__name__)
@@ -19,118 +19,96 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
-@router.get("/", response_model=List[BaseUserOut], status_code=200, tags=['users'])
-async def read_users(
-    skip: int = 0,
-    limit: int = 100,
-    current_user: User = Depends(get_current_active_superuser),
+@router.get("/", response_model=List[BaseTaskOut], status_code=200, tags=['tasks'])
+async def read_tasks(
+    current_user: User = Depends(get_current_active_user),
 ):
-    """
-    Retrieve users.
-    """
-    users = await User.all().limit(limit).offset(skip)
+    users = await Task.get_by_user(user_id=current_user.id)
     return users
 
 
-@router.post("/", response_model=BaseUserOut, status_code=201, tags=['users'])
-async def create_user(
+@router.post("/", response_model=BaseTaskOut, status_code=201, tags=['tasks'])
+async def create_task(
     *,
-    user_in: BaseUserCreate,
-    # current_user: User = Depends(get_current_active_superuser),
-    background_tasks: BackgroundTasks
-):
-    """
-    Create new user.
-    """
-    user = await User.get_by_email(email=user_in.email)
-    if user:
-        raise HTTPException(
-            status_code=400,
-            detail="The user with this username already exists in the system.",
-        )
-
-    hashed_password = get_password_hash(user_in.password)
-    wallet_keys = await create_wallet()
-    db_user = BaseUserCreate(
-        **user_in.create_update_dict(),
-        hashed_password=hashed_password,
-    )
-    db_user.public_wallet_key = wallet_keys.publicKey
-    db_user.private_wallet_key = wallet_keys.privateKey
-
-    created_user = await User.create(db_user)
-
-    if settings.EMAILS_ENABLED and user_in.email:
-        background_tasks.add_task(
-            send_new_account_email, email_to=user_in.email, username=user_in.email, password=user_in.password
-        )
-    return created_user
-
-
-@router.put("/me", response_model=BaseUserOut, status_code=200, tags=['users'])
-async def update_user_me(
-    user_in: BaseUserUpdate,
+    task_in: BaseTaskCreate,
     current_user: User = Depends(get_current_active_user)
 ):
-    """
-    Update own user.
-    """
-    if user_in.password is not None:
-        hashed_password = get_password_hash(user_in.password)
-        current_user.hashed_password = hashed_password
-    if user_in.username is not None:
-        current_user.username = user_in.username
-    if user_in.email is not None:
-        current_user.email = user_in.email
-    await current_user.save()
-    return current_user
-
-
-@router.get("/me", status_code=200, tags=['users'])
-def read_user_me(
-    response: Response,
-    current_user: User = Depends(get_current_active_user),
-):
-    """
-    Get current user.
-    """
-    response.headers["User-Id"] = str(current_user.id)
-    pass
-
-
-@router.get("/{user_id}", response_model=BaseUserOut, status_code=200, tags=['users'])
-async def read_user_by_id(
-    user_id: int,
-    current_user: User = Depends(get_current_active_user),
-):
-    """
-    Get a specific user by id.
-    """
-    user = await User.get(id=user_id)
-    if user == current_user:
-        return user
-    if not current_user.is_superuser:
-        raise HTTPException(
-            status_code=400, detail="The user doesn't have enough privileges"
-        )
-    return user
-
-
-@router.put("/{user_id}", response_model=BaseUserOut, status_code=200, tags=['users'])
-async def update_user(
-    user_id: int,
-    user_in: BaseUserUpdate,
-    current_user: User = Depends(get_current_active_superuser),
-):
-    """
-    Update a user.
-    """
-    user = await User.get(id=user_id)
-    if not user:
+    if current_user.role != UserRole.supervisor:
         raise HTTPException(
             status_code=404,
-            detail="The user with this username does not exist in the system",
+            detail="Этот пользователь не является руководителем",
         )
-    user = await user.update_from_dict(user_in.create_update_dict_superuser())
-    await user.save()
-    return user
+    db_task = BaseTaskCreate(
+        **task_in.create_update_dict(),
+    )
+    created_task = await Task.create(db_task)
+    return created_task
+
+
+@router.put("/{task_id}", response_model=BaseTaskOut, status_code=200, tags=['tasks'])
+async def update_task(
+    task_id: int,
+    task_in: BaseTaskUpdate,
+    current_user: User = Depends(get_current_active_user),
+):
+    if current_user.role != UserRole.supervisor:
+        raise HTTPException(
+            status_code=404,
+            detail="Этот пользователь не является руководителем",
+        )
+    task = await Task.get(id=task_id)
+    if not task:
+        raise HTTPException(
+            status_code=404,
+            detail="Такая задача не существует",
+        )
+    task = await task.update_from_dict(task_in.create_update_dict())
+    await task.save()
+    return task
+
+
+@router.post("/complete/{task_id}", response_model=BaseTaskOut, status_code=200, tags=['tasks'])
+async def complete_task(
+    task_id: int,
+    task_in: BaseTaskUpdate,
+    current_user: User = Depends(get_current_active_user),
+):
+    if current_user.role != UserRole.supervisor:
+        raise HTTPException(
+            status_code=404,
+            detail="Этот пользователь не является руководителем",
+        )
+    task = await Task.get(id=task_id)
+    if not task:
+        raise HTTPException(
+            status_code=404,
+            detail="Такая задача не существует",
+        )
+    recipient = await User.get(id=task_in.user_id)
+    if not recipient:
+        raise HTTPException(
+            status_code=404,
+            detail="Получатель не найден",
+        )
+    sender = await User.get(id=task_in.supervisor_id)
+    if not recipient:
+        raise HTTPException(
+            status_code=404,
+            detail="Получатель не найден",
+        )
+    transaction_data = SendRuble(
+        fromPrivateKey=sender.private_wallet_key,
+        toPublicKey=recipient.public_wallet_key,
+        amount=task.cost
+    )
+    transaction_data = send_ruble(transaction_data)
+    if not transaction_data:
+        raise HTTPException(
+            status_code=404,
+            detail="Отправить награду не удалось, повторите попытку",
+        )
+    task = await task.update_from_dict(task_in.create_update_dict())
+    await task.save()
+    return task
+
+

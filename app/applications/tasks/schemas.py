@@ -14,6 +14,12 @@ class BaseProperties(BaseModel):
         )
 
 
+class TaskStatus(str, Enum):
+    active = "Активна"
+    postponed = "Отложена"
+    finished = "Завершена"
+
+
 class BaseTask(BaseProperties):
     title: str
     description: str
@@ -21,6 +27,7 @@ class BaseTask(BaseProperties):
     user_id: int
     supervisor_id: int
     badge_id: int
+    status: TaskStatus = TaskStatus.active
 
 
 class BaseTaskCreate(BaseProperties):
@@ -30,6 +37,7 @@ class BaseTaskCreate(BaseProperties):
     user_id: int
     supervisor_id: int
     badge_id: int
+    status: TaskStatus = TaskStatus.active
 
 
 class BaseTaskUpdate(BaseProperties):
@@ -39,6 +47,7 @@ class BaseTaskUpdate(BaseProperties):
     user_id: int
     supervisor_id: int
     badge_id: int
+    status: TaskStatus = TaskStatus.active
 
 
 class BaseTaskDB(BaseTask):
@@ -49,12 +58,13 @@ class BaseTaskDB(BaseTask):
     user_id: int
     supervisor_id: int
     badge_id: int
+    status: TaskStatus = TaskStatus.active
 
     class Config:
         orm_mode = True
 
 
-class BaseUserOut(BaseTask):
+class BaseTaskOut(BaseTask):
     id: int
 
     class Config:

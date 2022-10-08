@@ -20,6 +20,11 @@ class SendRuble(BaseModel):
     amount: float
 
 
+class SendRubleTo(BaseModel):
+    user_id: int
+    amount: float
+
+
 class SendNFT(BaseModel):
     fromPrivateKey: str
     toPublicKey: str
