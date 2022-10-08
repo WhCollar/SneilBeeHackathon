@@ -1,31 +1,60 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MoreTechCS;
+using MoreTechCS.Core.CatalogFilter;
+using MoreTechCS.Core.FileUploader;
+using MoreTechCS.Extensions.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
+IServiceCollection services = builder.Services;
 
-builder.Services.AddDbContext<DatabaseContext>(o =>
+services.AddCors();
+
+services.AddDbContext<DatabaseContext>(o =>
 {
     o.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnectionString"));
 });
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.AddControllers();
+services.AddResponseCaching();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+
+services.AddSingleton<CatalogFilterCollection>();
+services.AddScoped<IFileUploader, FileUploader>();
+services.AddScoped<NewsFeedFileUploader>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+WebFiles.Initialize(app.Environment);
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCors(corsPolicyBuilder =>
+{
+    corsPolicyBuilder.AllowAnyOrigin();
+    corsPolicyBuilder.AllowAnyHeader();
+    corsPolicyBuilder.AllowAnyMethod();
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseResponseCaching();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseRequestLogging();
+app.UseUserAuthentication();
 
 app.Run();

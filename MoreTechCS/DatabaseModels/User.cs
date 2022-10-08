@@ -1,8 +1,8 @@
 ﻿namespace MoreTechCS.DatabaseModels;
 
-public class User
+public class User : DatabaseModelBase
 {
-    public int Id { get; set; }
+    public string UniversallyUniqueIdentifier { get; set; }
     
-    public int UniversallyUniqueIdentifier { get; set; }
+    public string Role { get; set; }
 }

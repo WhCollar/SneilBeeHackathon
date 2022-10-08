@@ -27,8 +27,6 @@ D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Serilog.Sinks.Fil
 D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\MarketplaceDataLibrary.dll
-D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\MarketplaceDataLibrary.pdb
 D:\RiderProjects\SneilBeeHackathon\MoreTechCS\obj\Debug\net6.0\MoreTechCS.csproj.AssemblyReference.cache
 D:\RiderProjects\SneilBeeHackathon\MoreTechCS\obj\Debug\net6.0\MoreTechCS.GeneratedMSBuildEditorConfig.editorconfig
 D:\RiderProjects\SneilBeeHackathon\MoreTechCS\obj\Debug\net6.0\MoreTechCS.AssemblyInfoInputs.cache
@@ -108,3 +106,11 @@ D:\RiderProjects\SneilBeeHackathon\Marketplace\MoreTechCS\obj\Debug\net6.0\refin
 D:\RiderProjects\SneilBeeHackathon\Marketplace\MoreTechCS\obj\Debug\net6.0\MoreTechCS.pdb
 D:\RiderProjects\SneilBeeHackathon\Marketplace\MoreTechCS\obj\Debug\net6.0\MoreTechCS.genruntimeconfig.cache
 D:\RiderProjects\SneilBeeHackathon\Marketplace\MoreTechCS\obj\Debug\net6.0\ref\MoreTechCS.dll
+D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\MoreTechCS.staticwebassets.runtime.json
+D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\RiderProjects\SneilBeeHackathon\MoreTechCS\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
