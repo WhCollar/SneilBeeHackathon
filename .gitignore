@@ -246,6 +246,7 @@ app/settings/config.py
 .prod.env
 .local.env
 .prod.full.env
+/app/upload/
 !/app/templates/emails/build/
 /docker/redis/redis-data/
 /docker/redis/log/
