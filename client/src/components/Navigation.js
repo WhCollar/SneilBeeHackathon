@@ -119,7 +119,6 @@ export default function Navigation() {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -183,6 +182,12 @@ export default function Navigation() {
                 navigate('/history');
               }}>
                 <Typography textAlign="center">История</Typography>
+              </MenuItem>
+              <MenuItem onClick={() => {
+                handleCloseUserMenu();
+                navigate('/cart');
+              }}>
+                <Typography textAlign="center">Корзина</Typography>
               </MenuItem>
               <MenuItem onClick={() => {
                 handleCloseUserMenu();

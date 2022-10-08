@@ -8,24 +8,23 @@ import Typography from '@mui/material/Typography';
 
 export default function ShopCards({ item }) {
   return (
-    <Card sx={{ maxWidth: 240, margin: 2 }}>
+    <Card sx={{ width: 200, margin: 2, position: 'relative' }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt=""
         height="200"
-        image={item.img}
+        image={`https://0c52-45-10-42-113.eu.ngrok.io/marketplace/${item.imagePath}`}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {item.title}
+          {item.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
           {item.description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">10 монет</Button>
-        {/* <Button size="small">Подробнее</Button> */}
+        <Button size="small" variant={item.isActive ? 'contained' : 'disabled'} sx={{ width: '100%', position: 'absolute', bottom: 0, left: 0, borderRadius: 0 }}>{item.price} NFT</Button>
       </CardActions>
     </Card>
   );

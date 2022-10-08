@@ -14,6 +14,7 @@ import History from '../pages/History';
 import Login from '../pages/Login';
 import Registration from '../pages/Registration';
 import Quests from '../pages/Quests';
+import Cart from '../pages/Cart';
 
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/history" element={<History />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<Error />} />
           </Route>
         </Routes>
