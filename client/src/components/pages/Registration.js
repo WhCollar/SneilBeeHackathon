@@ -112,7 +112,7 @@ export default function Registration() {
             }}
           />
           {error && <Typography variant="body1" color="error" sx={{ mt: 2 }}>{error}</Typography>}
-          <Button size="medium" sx={{ mt: 3 }} onClick={handleSubmit}>Продолжить</Button>
+          <Button size="medium" sx={{ mt: 3 }} onClick={handleSubmit} variant="contained">Продолжить</Button>
         </CardContent>
       </Card>
     </Grid>

@@ -15,6 +15,8 @@ export function loadProductsFromServer() {
   return (dispatch) => {
     fetch('https://0c52-45-10-42-113.eu.ngrok.io/marketplace/MockCatalog?PageNumber=1&PageSize=20')
     .then(response => response.json())
-    .then(data => dispatch(loadProducts(data)));
+    .then(data => {
+      dispatch(loadProducts(data))
+    });
   };
 }

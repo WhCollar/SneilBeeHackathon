@@ -18,12 +18,13 @@ export default function Error() {
             Произошла ошибка
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            К сожалению произошла непредвиденная ошибка. Попробуйте вернуться назад или перейти на главную страницу.
+            К сожалению произошла непредвиденная ошибка. Возможно данная страница недоступна для неавторизованных пользователей. Зарегистрируйтесь или войдите в Ваш аккаунт.
           </Typography>
         </CardContent>
         <CardActions>
           <Button size="medium" onClick={() => navigate(-1)}>Назад</Button>
-          <Button size="medium" onClick={() => navigate('/')}>Домой</Button>
+          <Button size="medium" onClick={() => navigate('/registration')}>Регистрация</Button>
+          <Button size="medium" onClick={() => navigate('/login')}>Вход</Button>
         </CardActions>
       </Card>
     </Grid>

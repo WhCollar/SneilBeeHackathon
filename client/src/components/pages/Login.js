@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../store/user/actionsCreators";
 
@@ -13,19 +13,25 @@ export default function Login() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
+  const isLoginError = useSelector(state => state.user.error);
   const [error, setError] = React.useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = React.useCallback(() => {
     if (email.trim() && password.trim()) {
         dispatch(loginUser(email, password));
-        navigate('/');
+        if (isLoginError) {
+          setError('Неверный логин или пароль');
+        } else {
+          setError('');
+          navigate('/');
+        }
     } else {
       setError('Поля не могут быть пустыми');
     }
-  };
+  }, [dispatch, email, isLoginError, navigate, password]);
 
   return (
     <Grid container justifyContent="center" sx={{ mt: 10 }}>
@@ -62,7 +68,7 @@ export default function Login() {
             }}
           />
           {error && <Typography variant="body1" color="error" sx={{ mt: 2 }}>{error}</Typography>}
-          <Button size="medium" sx={{ mt: 3 }} onClick={handleSubmit}>Продолжить</Button>
+          <Button size="medium" sx={{ mt: 3 }} onClick={handleSubmit} variant="contained">Продолжить</Button>
         </CardContent>
       </Card>
     </Grid>

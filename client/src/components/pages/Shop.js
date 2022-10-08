@@ -36,7 +36,7 @@ export default function Shop() {
 
   return (
     <React.Fragment>
-      <Card sx={{ maxWidth: 500, bgcolor: '#F5F5F5', margin: '20px auto', mt: 6 }}>
+      <Card sx={{ maxWidth: 500, bgcolor: '#F5F5F5', margin: '30px auto', mt: 14 }}>
         <Search>
           <SearchIconWrapper>
             <SearchIcon />

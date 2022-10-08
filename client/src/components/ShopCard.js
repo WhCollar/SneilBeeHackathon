@@ -24,7 +24,7 @@ export default function ShopCards({ item }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" variant={item.isActive ? 'contained' : 'disabled'} sx={{ width: '100%', position: 'absolute', bottom: 0, left: 0, borderRadius: 0 }}>{item.price} NFT</Button>
+        <Button size="small" variant={item.isActive ? 'contained' : 'disabled'} sx={{ width: '100%', position: 'absolute', bottom: 0, left: 0, borderRadius: 0 }}>{item.price} ВТБ coin</Button>
       </CardActions>
     </Card>
   );

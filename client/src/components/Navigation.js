@@ -12,11 +12,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
-import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { logout } from '../store/user/actionsCreators';
+import { useDispatch } from 'react-redux';
 
 export default function Navigation() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -37,8 +40,13 @@ export default function Navigation() {
     setAnchorElUser(null);
   };
 
+  const logoutUser = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container >
         <Toolbar disableGutters>
           <ClearAllIcon fontSize="large" sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }} />
@@ -68,7 +76,7 @@ export default function Navigation() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <HomeIcon fontSize="large" />
+              <KeyboardArrowDownIcon fontSize="large" />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -90,21 +98,15 @@ export default function Navigation() {
             >
               <MenuItem onClick={() => {
                 handleCloseNavMenu();
-                navigate('/quests');
+                navigate('/');
               }}>
-                <Typography textAlign="center">Квесты</Typography>
+                <Typography textAlign="center">Новости</Typography>
               </MenuItem>
               <MenuItem onClick={() => {
                 handleCloseNavMenu();
                 navigate('/shop');
               }}>
                 <Typography textAlign="center">Магазин</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => {
-                handleCloseNavMenu();
-                navigate('/news');
-              }}>
-                <Typography textAlign="center">Новости</Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -128,10 +130,10 @@ export default function Navigation() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button
               color="secondary"
-              onClick={() => navigate('/quests')}
+              onClick={() => navigate('/')}
               sx={{ my: 2, display: 'block' }}
             >
-              Квесты
+              Новости
             </Button>
             <Button
               color="secondary"
@@ -140,15 +142,7 @@ export default function Navigation() {
             >
               Магазин
             </Button>
-            <Button
-              color="secondary"
-              onClick={() => navigate('/news')}
-              sx={{ my: 2, display: 'block' }}
-            >
-              Новости
-            </Button>
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Открыть меню профиля">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -171,39 +165,46 @@ export default function Navigation() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={() => {
-                handleCloseUserMenu();
-                navigate('/profile');
-              }}>
-                <Typography textAlign="center">Профиль</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => {
-                handleCloseUserMenu();
-                navigate('/history');
-              }}>
-                <Typography textAlign="center">История</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => {
-                handleCloseUserMenu();
-                navigate('/cart');
-              }}>
-                <Typography textAlign="center">Корзина</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => {
-                handleCloseUserMenu();
-                navigate('/login');
-              }}>
-                <Typography textAlign="center">Вход</Typography>
-              </MenuItem>
-              <MenuItem onClick={() => {
-                handleCloseUserMenu();
-                navigate('/registration');
-              }}>
-                <Typography textAlign="center">Регистрация</Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Выход</Typography>
-              </MenuItem>
+              {localStorage.user && (
+                <MenuItem onClick={() => {
+                  handleCloseUserMenu();
+                  navigate('/profile');
+                }}>
+                  <Typography textAlign="center">Профиль</Typography>
+                </MenuItem>
+              )}
+              {localStorage.user && (
+                <MenuItem onClick={() => {
+                  handleCloseUserMenu();
+                  navigate('/cart');
+                }}>
+                  <Typography textAlign="center">Корзина</Typography>
+                </MenuItem>
+              )}
+              {!localStorage.user && (
+                <MenuItem onClick={() => {
+                  handleCloseUserMenu();
+                  navigate('/login');
+                }}>
+                  <Typography textAlign="center">Вход</Typography>
+                </MenuItem>
+              )}
+              {!localStorage.user && (
+                <MenuItem onClick={() => {
+                  handleCloseUserMenu();
+                  navigate('/registration');
+                }}>
+                  <Typography textAlign="center">Регистрация</Typography>
+                </MenuItem>
+              )}
+              {localStorage.user && (
+                <MenuItem onClick={() => {
+                  handleCloseUserMenu();
+                  logoutUser();
+                }}>
+                  <Typography textAlign="center">Выход</Typography>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>

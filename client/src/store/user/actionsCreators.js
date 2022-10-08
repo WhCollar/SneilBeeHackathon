@@ -1,9 +1,12 @@
 import {
+  IS_ERROR,
 } from './actionsTypes';
+
+const SERVER_HOST = 'https://0c52-45-10-42-113.eu.ngrok.io';
 
 export function registrationUser(first_name, last_name, username, email, password) {
   return (dispatch) => {
-    fetch('https://0c52-45-10-42-113.eu.ngrok.io/api/auth/users', {
+    fetch(SERVER_HOST + '/api/auth/users/', {
       method: 'POST',
       body: JSON.stringify({
         first_name,
@@ -11,6 +14,9 @@ export function registrationUser(first_name, last_name, username, email, passwor
         username,
         email,
         password,
+        hashed_id: '',
+        public_wallet_key: '',
+        private_wallet_key: '',
       }),
       headers: { 'Content-Type': 'application/json' },
     })
@@ -21,8 +27,7 @@ export function registrationUser(first_name, last_name, username, email, passwor
 
 export function loginUser(email, password) {
   return (dispatch) => {
-    // console.log(login, password);
-    fetch('/api/auth/login/access-token', {
+    fetch(SERVER_HOST + '/api/auth/login/access-token', {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -32,14 +37,17 @@ export function loginUser(email, password) {
     })
     .then(data => data.json())
     .then(data => {
+      if (data.detail) dispatch(isError(true));
       if (data.access_token) {
+        dispatch(isError(false));
         localStorage.setItem('user', data.access_token);
       }
-
-      // return data;
     });
-
   };
+}
+
+export function isError(payload) {
+  return { type: IS_ERROR, payload };
 }
 
 export function getUser() {
@@ -51,5 +59,7 @@ export function getUser() {
 }
 
 export function logout() {
-  localStorage.removeItem('user');
+  return (dispatch) => {
+    localStorage.removeItem('user');
+  }
 }

@@ -24,8 +24,8 @@ body {
   /* background-image: url('./assets/back.png'); */
   background-size: 100%;
   background-repeat: no-repeat;
-  /* background-position: 0 200px; */
-  background-color: #ececee;
+  /* background-position: 0 100px; */
+  background-color: #F3F7FA;
 }
 
 ol, ul {
