@@ -8,6 +8,7 @@ from app.core.exceptions import APIException, on_api_exception
 from app.settings.config import settings
 from app.settings.log import DEFAULT_LOGGING
 from app.core.auth.routers.login import router as login_router
+from app.core.blockchain.routers.wallet import router as wallet_router
 from app.applications.users.routes import router as users_router
 
 
@@ -69,3 +70,4 @@ def register_exceptions(app: FastAPI):
 def register_routers(app: FastAPI):
     app.include_router(login_router, prefix='/api/auth/login')
     app.include_router(users_router, prefix='/api/auth/users')
+    app.include_router(wallet_router, prefix='/api/wallet')

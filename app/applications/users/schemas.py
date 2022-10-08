@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 from typing import Optional, TypeVar
+from enum import Enum
 
 from pydantic import BaseModel, EmailStr, UUID4, validator
 
@@ -20,12 +21,20 @@ class BaseProperties(BaseModel):
         return self.dict(exclude_unset=True, exclude={"id"})
 
 
+class UserRole(str, Enum):
+    administrator = 'Администратор'
+    redactor = 'Редактор'
+    employee = 'Сотрудник'
+    supervisor = 'Руководитель'
+
+
 class BaseUser(BaseProperties):
     first_name: Optional[str]
     last_name: Optional[str]
     hashed_id: Optional[UUID4] = None
     email: Optional[EmailStr] = None
     username: Optional[str] = None
+    role: UserRole = UserRole.employee
     is_active: Optional[bool] = True
     is_superuser: Optional[bool] = False
     created_at: Optional[datetime]
@@ -38,6 +47,9 @@ class BaseUserCreate(BaseProperties):
     email: EmailStr
     username: Optional[str]
     password: str
+    public_wallet_key: str
+    private_wallet_key: str
+    role: UserRole = UserRole.employee
 
 
 class BaseUserUpdate(BaseProperties):
@@ -46,12 +58,15 @@ class BaseUserUpdate(BaseProperties):
     password: Optional[str]
     email: Optional[EmailStr]
     username: Optional[str]
+    role: UserRole = UserRole.employee
 
 
 class BaseUserDB(BaseUser):
     id: int
     hashed_id: UUID4
     password_hash: str
+    public_wallet_key: str
+    private_wallet_key: str
     updated_at: datetime
     last_login: Optional[datetime]
 
