@@ -11,13 +11,22 @@ import InputBase from '@mui/material/InputBase';
 import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadProductsFromServer, setPruductsByCategory } from '../../store/shop/actionsCreators';
+import { loadCategoriesFromServer, loadProductsWithFilter } from '../../store/shop/actionsCreators';
+// import PriceSlider from '../PriceSlider';
+import ButtonGroup from '@mui/material/ButtonGroup';
+// import { Typography } from '@mui/material';
 
 export default function Shop() {
   const dispatch = useDispatch();
-  const products = useSelector(state => state.shop.productsWithCategories);
+  const data = useSelector(state => state.shop.products);
+  const categories = useSelector(state => state.shop.categories);
+  // const price = useSelector(state => state.shop.price);
+  // console.log(price);
 
-  const [activeCatigory, setActiveCatigory] = React.useState(null);
+  // const [value, setValue] = React.useState([0, 1]);
+  // console.log(value);
+
+  const [activeCategory, setActiveCategory] = React.useState(-1);
 
   const [page, setPage] = React.useState(1);
   const handleChange = (event, value) => {
@@ -25,58 +34,60 @@ export default function Shop() {
   };
 
   const setCategory = (event, category) => {
-    setActiveCatigory(category);
-    dispatch(setPruductsByCategory(category));
+    setActiveCategory(category);
+    dispatch(loadProductsWithFilter(0, 10, category, 1));
   };
 
   React.useEffect(() => {
-    dispatch(loadProductsFromServer());
-    dispatch(setPruductsByCategory(activeCatigory));
-  }, [activeCatigory, dispatch]);
+    dispatch(loadCategoriesFromServer());
+    dispatch(loadProductsWithFilter(0, 10, activeCategory, page));
+  }, [activeCategory, dispatch, page]);
 
   return (
     <React.Fragment>
-      <Card sx={{ maxWidth: 500, bgcolor: '#F5F5F5', margin: '30px auto', mt: 14 }}>
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Поиск"
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </Search>
-      </Card>
-      <Grid container justifyContent="center" sx={{ mt: 2 }}>
-        {catigories.map((category, idx) => (
-          <Button
-            key={category + idx}
-            variant={category === activeCatigory ? 'contained' : 'outlined'}
-            sx={{ ml: 1, mr: 1, mt: 1 }}
-            onClick={(event) => setCategory(event, category)}
-          >
-            {category}
-          </Button>
-        ))}
+      <Grid container justifyContent="center" sx={{ mt: 4 }}>
+        <Grid container justifyContent="center" alignItems="center" flexDirection="column">
+          <Card sx={{ width: 400, margin: '30px auto', mt: 14 }}>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+              placeholder="Поиск"
+              inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
+          </Card>
+          {/* <PriceSlider value={value} setValue={setValue} /> */}
+        </Grid>
+        <ButtonGroup variant="text" aria-label="outlined primary button group" sx={{ maxWidth: 420 }}>
+          {categories.map((category) => (
+            <Button
+              key={category.id}
+              variant={category.id === activeCategory ? 'contained' : 'text'}
+              onClick={(event) => setCategory(event, category.id)}
+              >
+              {category.name}
+            </Button>
+          ))}
         <Button
-          variant='outlined'
-          sx={{ ml: 1, mr: 1, mt: 1 }}
-          onClick={(event) => setCategory(event, null)}>
+          variant='text'
+          onClick={(event) => setCategory(event, -1)}>
             <CloseIcon />
           </Button>
+        </ButtonGroup>
       </Grid>
 
       <Grid container justifyContent="center" sx={{ mt: 10, maxWidth: 1600, ml: 'auto', mr: 'auto' }}>
-        {products.map((item) => (
+        {data.products && data.products.map((item) => (
           <ShopCard key={item.id} item={item} />
         ))}
       </Grid>
 
-      {/* <Typography>Page: {page}</Typography> */}
       <Card sx={{ maxWidth: 500, bgcolor: '#F5F5F5', margin: '20px auto' }}>
         <CardActions>
           <Stack spacing={2} sx={{ margin: '0 auto' }}>
-            <Pagination count={10} page={page} onChange={handleChange} />
+            <Pagination count={data.totalPages} page={page} onChange={handleChange} />
           </Stack>
         </CardActions>
       </Card>
@@ -119,10 +130,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     [theme.breakpoints.up('sm')]: {
       width: '12ch',
       '&:focus': {
-        width: '20ch',
+        width: '36ch',
       },
     },
   },
 }));
 
-const catigories = ['Худи', 'Кружки', 'Зонты', 'Футболки', 'Стикеры'];
+// const catigories = ['Худи', 'Кружки', 'Зонты', 'Футболки', 'Стикеры'];

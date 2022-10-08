@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 export default function ShopCards({ item }) {
   return (
-    <Card sx={{ width: 200, margin: 2, position: 'relative' }}>
+    <Card sx={{ width: 220, margin: 2, position: 'relative' }}>
       <CardMedia
         component="img"
         alt=""
@@ -16,11 +16,11 @@ export default function ShopCards({ item }) {
         image={`https://0c52-45-10-42-113.eu.ngrok.io/marketplace/${item.imagePath}`}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           {item.name}
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-          {item.description}
+          {item.description.length > 30 ? item.description.substr(0, 29) + '...' : item.description}
         </Typography>
       </CardContent>
       <CardActions>

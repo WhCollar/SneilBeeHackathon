@@ -26,7 +26,7 @@ export default function Login() {
           setError('Неверный логин или пароль');
         } else {
           setError('');
-          navigate('/');
+          navigate('/profile');
         }
     } else {
       setError('Поля не могут быть пустыми');
