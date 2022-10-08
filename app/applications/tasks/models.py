@@ -12,9 +12,9 @@ class Task(BaseDBModel, BaseCreatedUpdatedAtModel):
     title = fields.CharField(max_length=20, unique=True)
     description = fields.CharField(max_length=255, unique=True)
     cost = fields.CharField(max_length=50, null=True)
-    user_id = fields.ForeignKeyField("models.User", related_name="employee")
-    supervisor_id = fields.ForeignKeyField("models.User", related_name="supervisor")
-    badge_id = fields.ForeignKeyField("models.Badge")
+    user = fields.ForeignKeyField("models.User", related_name="employee")
+    supervisor = fields.ForeignKeyField("models.User", related_name="supervisor")
+    badge = fields.ForeignKeyField("models.Badge")
     status = fields.CharField(max_length=50)
 
     @classmethod

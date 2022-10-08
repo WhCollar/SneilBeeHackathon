@@ -16,7 +16,7 @@ class BaseProperties(BaseModel):
 
 class BaseBadge(BaseProperties):
     title: str
-    image: str
+    file_id: int
     description: str
     user_id: int
 

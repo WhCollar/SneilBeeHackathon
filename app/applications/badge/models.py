@@ -10,9 +10,9 @@ from app.core.base.base_models import BaseCreatedUpdatedAtModel, BaseDBModel
 class Badge(BaseDBModel, BaseCreatedUpdatedAtModel):
 
     title = fields.CharField(max_length=50, unique=True)
-    image = fields.TextField()
+    file = fields.ForeignKeyField("models.File")
     description = fields.TextField(null=True)
-    user_id = fields.ForeignKeyField("models.User")
+    user = fields.ForeignKeyField("models.User")
 
     @classmethod
     async def get_by_id(cls, id: int) -> Optional["Badge"]:

@@ -63,15 +63,6 @@ async def create_user(
     db_user.private_wallet_key = wallet_keys.privateKey
 
     created_user = await User.create(db_user)
-    # user_data = json.dumps({
-    #     "universallyUniqueIdentifier": created_user.id,
-    #     "userRole": UserRole(created_user.role).name
-    # })
-    # async with aiohttp.ClientSession() as session:
-    #     url = f"{settings.BACKEND_DOMAIN}/UserRegistration"
-    #     async with session.post(url, headers={ "User-Data": }) as response:
-    #         return TransactionHash.parse_raw(await response.text())
-
     if settings.EMAILS_ENABLED and user_in.email:
         background_tasks.add_task(
             send_new_account_email, email_to=user_in.email, username=user_in.email, password=user_in.password
@@ -98,7 +89,7 @@ async def update_user_me(
     return current_user
 
 
-@router.get("/me", status_code=200, tags=['users'])
+@router.get("/auth", status_code=200, tags=['users'])
 def read_user_me(
     response: Response,
     current_user: User = Depends(get_current_active_user),
@@ -112,6 +103,16 @@ def read_user_me(
     })
     response.headers["User-Data"] = user_data
     pass
+
+
+@router.get("/me", status_code=200, tags=['users'])
+def read_user_me(
+    current_user: User = Depends(get_current_active_user),
+):
+    """
+    Get current user.
+    """
+    return current_user
 
 
 @router.get("/{user_id}", response_model=BaseUserOut, status_code=200, tags=['users'])
