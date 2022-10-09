@@ -12,19 +12,14 @@ import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCategoriesFromServer, loadProductsWithFilter } from '../../store/shop/actionsCreators';
-// import PriceSlider from '../PriceSlider';
 import ButtonGroup from '@mui/material/ButtonGroup';
-// import { Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function Shop() {
   const dispatch = useDispatch();
   const data = useSelector(state => state.shop.products);
   const categories = useSelector(state => state.shop.categories);
-  // const price = useSelector(state => state.shop.price);
-  // console.log(price);
-
-  // const [value, setValue] = React.useState([0, 1]);
-  // console.log(value);
+  const navigate = useNavigate();
 
   const [activeCategory, setActiveCategory] = React.useState(-1);
 
@@ -39,9 +34,10 @@ export default function Shop() {
   };
 
   React.useEffect(() => {
+    if (!localStorage.user) navigate('*');
     dispatch(loadCategoriesFromServer());
     dispatch(loadProductsWithFilter(0, 10, activeCategory, page));
-  }, [activeCategory, dispatch, page]);
+  }, [activeCategory, dispatch, navigate, page]);
 
   return (
     <React.Fragment>
@@ -58,7 +54,6 @@ export default function Shop() {
               />
             </Search>
           </Card>
-          {/* <PriceSlider value={value} setValue={setValue} /> */}
         </Grid>
         <ButtonGroup variant="text" aria-label="outlined primary button group" sx={{ maxWidth: 420 }}>
           {categories.map((category) => (
@@ -135,5 +130,3 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-
-// const catigories = ['Худи', 'Кружки', 'Зонты', 'Футболки', 'Стикеры'];

@@ -132,6 +132,13 @@ export default function Navigation() {
               Магазин
             </Button>
           </Box>
+
+          {localStorage.user && (
+            <Box sx={{ flexGrow: 0, mr: 2 }}>
+              <Typography variant="body2" >Профиль</Typography>
+            </Box>
+          )}
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Открыть меню профиля">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

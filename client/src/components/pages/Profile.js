@@ -6,23 +6,16 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-// import List from '@mui/material/List';
-// import ListItem from '@mui/material/ListItem';
-// import SendIcon from '@mui/icons-material/Send';
-// import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
 import ForestIcon from '@mui/icons-material/Forest';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../store/user/actionsCreators';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  const navigate = useNavigate();
-
-  if (!localStorage.user) navigate('/');
 
   return (
     <div
@@ -47,64 +40,52 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-// function a11yProps(index) {
-//   return {
-//     id: `simple-tab-${index}`,
-//     'aria-controls': `simple-tabpanel-${index}`,
-//   };
-// }
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 export default function Profile() {
-  // const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0);
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user.data);
 
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
+  const navigate = useNavigate();
+  if (!localStorage.user) navigate('/');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  
+  React.useEffect(() => dispatch(getUser()), [dispatch, navigate]);
 
   return (
-    <Grid container justifyContent="center" sx={{ mt: 10 }}>    
+    <Grid container sx={{ mt: 12, flexDirection: 'column', alignItems: 'center' }}>    
       <Card sx={{ width: 600, margin: '20px auto' }}>
         <Avatar
-          alt="Котова Анастасия"
+          alt={user.first_name + ' ' + user.last_name}
           src="https://loremflickr.com/g/240/240/dog" 
-          sx={{ width: 200, height: 200, margin: '10px auto' }}
+          sx={{ width: 200, height: 200, margin: '30px auto' }}
         />
-        <Typography variant="h4" sx={{ textAlign: 'center' }}>Котова Анастасия</Typography>
-        <Typography variant="h6" sx={{ textAlign: 'center', fontWeight: '300' }}>— More. Tech 4.0</Typography>
-        <CardActions disableSpacing sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Typography variant="h4" sx={{ textAlign: 'center' }}>{user.first_name + ' ' + user.last_name}</Typography>
+        <Typography variant="h6" sx={{ textAlign: 'center', fontWeight: '300' }}>— {user.status}</Typography>
+        <CardActions disableSpacing sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
           <Button variant="contained" sx={{ margin: '10px'}}>Мой сад<ForestIcon sx={{ ml: 1 }} /></Button>
           <Button variant="contained">Коллекция</Button>
         </CardActions>
-        {/* <CardContent> */}
-          {/* <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                <Tab label="Списания" {...a11yProps(0)} />
-                <Tab label="Зачисления" {...a11yProps(1)} />
-                <Tab label="Покупки" {...a11yProps(2)} />
-              </Tabs>
-            </Box>
-            <TabPanel value={value} index={0}>
-              <nav aria-label="main mailbox folders">
-                <List>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SendIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Вы перевели 15 ВТБ-COIN Виктору" />
-                    </ListItemButton>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        <SendIcon />
-                      </ListItemIcon>
-                      <ListItemText primary="Вы перевели 30 ВТБ-COIN Александру" />
-                    </ListItemButton>
-                  </ListItem>
-                </List>
-              </nav>
+      </Card>
+      <Box sx={{ borderRadius: '6px', boxShadow: 1, backgroundColor: '#FFFFFF', mt: 2, width: 600, minHeight: 400 }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs value={value} onChange={handleChange}>
+            <Tab label="Списания" {...a11yProps(0)} />
+            <Tab label="Зачисления" {...a11yProps(1)} />
+            <Tab label="Покупки" {...a11yProps(2)} />
+          </Tabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+              Здесь будет Ваша история списаний
             </TabPanel>
             <TabPanel value={value} index={1}>
               Здесь будет Ваша история зачислений
@@ -112,9 +93,7 @@ export default function Profile() {
             <TabPanel value={value} index={2}>
               Здесь будет ваша история покупок
             </TabPanel>
-          </Box> */}
-        {/* </CardContent> */}
-      </Card>
+          </Box>
     </Grid>
   );
 }

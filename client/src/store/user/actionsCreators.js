@@ -1,5 +1,6 @@
 import {
   IS_ERROR,
+  LOAD_USER,
 } from './actionsTypes';
 
 const SERVER_HOST = 'https://0c52-45-10-42-113.eu.ngrok.io';
@@ -52,10 +53,17 @@ export function isError(payload) {
 
 export function getUser() {
   return (dispatch) => {
-    fetch('/api/auth/users')
-    .then(data => data.json()
-    .then(data => console.log(data)));
+    fetch(SERVER_HOST + '/api/auth/users/me', {
+      method: 'GET',
+      headers: { 'Authorization': 'Bearer ' + localStorage.user },
+    })
+    .then(data => data.json())
+    .then(data => dispatch(loadUser(data)));
   };
+}
+
+export function loadUser(payload) {
+  return { type: LOAD_USER, payload };
 }
 
 export function logout() {

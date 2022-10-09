@@ -12,7 +12,7 @@ export default function Error() {
 
   return (
     <Grid container justifyContent="center" sx={{ mt: 10 }}>
-      <Card sx={{ maxWidth: 500, bgcolor: '#F5F5F5' }}>
+      <Card sx={{ maxWidth: 500 }}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             Произошла ошибка
