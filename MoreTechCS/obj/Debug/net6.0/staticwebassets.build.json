@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sK9F9GNrK0HRUEmEDsD2ZRRFtJSEZMt3WVoOJxY6dnI=",
+  "Hash": "Y7+z/gtTqCbZOEGz3Akq08a0Wi4/D4HmlT4CCZ9DLhc=",
   "Source": "MoreTechCS",
   "BasePath": "_content/MoreTechCS",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "MoreTechCS\\wwwroot",
       "Source": "MoreTechCS",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\1gjel0zv.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\1gjel0zv.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "1gjel0zv.jpg",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\1gjel0zv.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\5yql2wpx.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\5yql2wpx.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "5yql2wpx.jpg",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\5yql2wpx.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\ipxzwddn.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\ipxzwddn.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "ipxzwddn.jpg",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\ipxzwddn.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\jgugxzby.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\jgugxzby.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "jgugxzby.jpg",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\jgugxzby.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\kbz2v24g.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\kbz2v24g.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "kbz2v24g.jpg",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\kbz2v24g.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\kid2c21g.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\kid2c21g.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "kid2c21g.jpg",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\kid2c21g.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\n2e4js0b.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\n2e4js0b.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "n2e4js0b.jpg",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\n2e4js0b.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\NewsFeedFiles\\3bt0y01o.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\NewsFeedFiles\\3bt0y01o.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "NewsFeedFiles/3bt0y01o.jpg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\NewsFeedFiles\\3bt0y01o.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\NewsFeedFiles\\fhl4dnhp.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\NewsFeedFiles\\fhl4dnhp.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "NewsFeedFiles/fhl4dnhp.jpg",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\NewsFeedFiles\\fhl4dnhp.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\p1wqkpvz.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\p1wqkpvz.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "p1wqkpvz.jpg",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\p1wqkpvz.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\teuhxkvc.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\teuhxkvc.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "teuhxkvc.jpg",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\teuhxkvc.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\uk4cixbp.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\uk4cixbp.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "uk4cixbp.jpg",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\uk4cixbp.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\vx5yqcvc.jpg",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\vx5yqcvc.jpg",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "vx5yqcvc.jpg",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\vx5yqcvc.jpg"
     },
     {
-      "Identity": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\y1ht53xa.png",
+      "Identity": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\y1ht53xa.png",
       "SourceId": "MoreTechCS",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\RiderProjects\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Monse\\Desktop\\Хакатон\\SneilBeeHackathon\\MoreTechCS\\wwwroot\\",
       "BasePath": "_content/MoreTechCS",
       "RelativePath": "y1ht53xa.png",
       "AssetKind": "All",
