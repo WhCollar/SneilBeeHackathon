@@ -4,16 +4,16 @@ export const theme = createTheme({
   palette: {
     type: 'light',
     primary: {
-      main: '#283593',
+      main: '#0045F9',
     },
     secondary: {
-      main: 'rgba(244, 244, 244, 0.8)',
+      main: '#e0e0e0',
     },
     background: {
       default: '#ECEBE6',
     },
   },
   shape: {
-    borderRadius: 20,
+    borderRadius: 6,
   },
 });

@@ -21,11 +21,7 @@ body {
   font-weight: 400;
   letter-spacing: 1px;
   font-size: 20px;
-  background-image: url('./assets/back.png');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: 0 50px;
-  background-color: #EFF2F4;
+  background-color: #F3F7FA;
 }
 
 ol, ul {
