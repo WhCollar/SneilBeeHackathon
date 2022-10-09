@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoreTechCS;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoreTechCS.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221009010343_EditNewsTable3")]
+    partial class EditNewsTable3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,12 +115,7 @@ namespace MoreTechCS.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("NewsPosts");
                 });
@@ -235,6 +233,9 @@ namespace MoreTechCS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("NewsPostId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("text");
@@ -244,6 +245,8 @@ namespace MoreTechCS.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("NewsPostId");
 
                     b.ToTable("Users");
                 });
@@ -276,13 +279,6 @@ namespace MoreTechCS.Migrations
                     b.Navigation("OwnerCart");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("MoreTechCS.DatabaseModels.NewsPost", b =>
-                {
-                    b.HasOne("MoreTechCS.DatabaseModels.User", null)
-                        .WithMany("LikePosts")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("MoreTechCS.DatabaseModels.Order", b =>
@@ -339,7 +335,14 @@ namespace MoreTechCS.Migrations
 
             modelBuilder.Entity("MoreTechCS.DatabaseModels.User", b =>
                 {
-                    b.Navigation("LikePosts");
+                    b.HasOne("MoreTechCS.DatabaseModels.NewsPost", null)
+                        .WithMany("Users")
+                        .HasForeignKey("NewsPostId");
+                });
+
+            modelBuilder.Entity("MoreTechCS.DatabaseModels.NewsPost", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

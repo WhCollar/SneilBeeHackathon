@@ -18,8 +18,6 @@ public class UserAuthenticationMiddleware
     {
         bool hasDataHeader = context.Request.Headers.ContainsKey("User-Data");
         
-        Console.WriteLine(hasDataHeader);
-
         if (hasDataHeader == true)
         {
             User user = context.GetFromHeader<User>("User-Data");

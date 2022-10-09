@@ -22,5 +22,9 @@ public class DatabaseContext : DbContext
     
     public DbSet<SubCategory> SubCategories { get; private set; }
     
+    public DbSet<Order> Orders { get; private set; }
+    
+    public DbSet<OrderItem> OrderItems { get; private set; }
+
     public DbSet<NewsPost> NewsPosts { get; private set; }
 }

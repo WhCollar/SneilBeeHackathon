@@ -7,7 +7,7 @@ using MoreTechCS.Extensions;
 namespace MoreTechCS.Controllers.Mock;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Auth/[controller]")]
 public class MockProductController : ControllerBase
 {
     private readonly IFileUploader _fileUploader;

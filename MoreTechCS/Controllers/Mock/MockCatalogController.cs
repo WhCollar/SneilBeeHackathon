@@ -7,7 +7,7 @@ using MoreTechCS.DatabaseModels;
 namespace MoreTechCS.Controllers.Mock;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Auth/[controller]")]
 public class MockCatalogController : ControllerBase
 {
     private readonly DatabaseContext _databaseContext;

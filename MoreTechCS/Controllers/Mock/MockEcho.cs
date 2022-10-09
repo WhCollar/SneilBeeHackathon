@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MoreTechCS.Controllers.Mock;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Auth/[controller]")]
 public class MockEcho : ControllerBase
 {
     [HttpPost]

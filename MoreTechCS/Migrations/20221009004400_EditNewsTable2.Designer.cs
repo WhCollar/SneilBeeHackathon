@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoreTechCS;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoreTechCS.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221009004400_EditNewsTable2")]
+    partial class EditNewsTable2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,9 +102,6 @@ namespace MoreTechCS.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsLiked")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("LikesCount")
                         .HasColumnType("integer");
 
@@ -112,12 +112,7 @@ namespace MoreTechCS.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("NewsPosts");
                 });
@@ -278,13 +273,6 @@ namespace MoreTechCS.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("MoreTechCS.DatabaseModels.NewsPost", b =>
-                {
-                    b.HasOne("MoreTechCS.DatabaseModels.User", null)
-                        .WithMany("LikePosts")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("MoreTechCS.DatabaseModels.Order", b =>
                 {
                     b.HasOne("MoreTechCS.DatabaseModels.User", "Owner")
@@ -335,11 +323,6 @@ namespace MoreTechCS.Migrations
                         .IsRequired();
 
                     b.Navigation("Owner");
-                });
-
-            modelBuilder.Entity("MoreTechCS.DatabaseModels.User", b =>
-                {
-                    b.Navigation("LikePosts");
                 });
 #pragma warning restore 612, 618
         }

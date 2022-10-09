@@ -6,7 +6,7 @@ using MoreTechCS.Extensions;
 namespace MoreTechCS.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Auth/[controller]")]
 public class UserRegistrationController : ControllerBase
 {
     private readonly DatabaseContext _databaseContext;

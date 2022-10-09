@@ -6,7 +6,7 @@ using MoreTechCS.DatabaseModels;
 namespace MoreTechCS.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Auth/[controller]")]
 public class CatalogFilterDataController : ControllerBase
 {
     private readonly DatabaseContext _databaseContext;

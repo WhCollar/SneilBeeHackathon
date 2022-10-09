@@ -1,17 +1,14 @@
-using System.Text;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using MoreTechCS;
 using MoreTechCS.Core.CatalogFilter;
 using MoreTechCS.Core.FileUploader;
 using MoreTechCS.Extensions.Middlewares;
+using MoreTechCS.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 IServiceCollection services = builder.Services;
 
-services.AddCors();
+//services.AddCors();
 
 services.AddDbContext<DatabaseContext>(o =>
 {
@@ -35,12 +32,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.UseCors(corsPolicyBuilder =>
+/*app.UseCors(corsPolicyBuilder =>
 {
     corsPolicyBuilder.AllowAnyOrigin();
     corsPolicyBuilder.AllowAnyHeader();
     corsPolicyBuilder.AllowAnyMethod();
-});
+});*/
 
 if (app.Environment.IsDevelopment())
 {
@@ -56,5 +53,6 @@ app.MapControllers();
 
 app.UseRequestLogging();
 app.UseUserAuthentication();
+app.UseMiddleware<LoggerHeaderMiddleware>();
 
 app.Run();

@@ -6,7 +6,11 @@ public class NewsPost : DatabaseModelBase
     
     public string ImagePath { get; set; }
 
+    public string Title { get; set; }
+    
     public string Content { get; set; }
     
     public int LikesCount { get; set; }
+    
+    public bool IsLiked { get; set; }
 }

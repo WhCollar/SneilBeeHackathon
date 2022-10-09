@@ -30,7 +30,7 @@ public class NewsFeedFileUploader : IFileUploader
         await using FileStream fileStream = new FileStream(savePath, FileMode.Create);
         await file.CopyToAsync(fileStream);
 
-        return fileName;
+        return Path.Combine(SaveFolder, fileName);
     }
 
     public void Delete(string filePath)

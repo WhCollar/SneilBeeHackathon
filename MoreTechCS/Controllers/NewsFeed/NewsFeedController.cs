@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MoreTechCS.Core.Authentication;
 using MoreTechCS.Core.FileUploader;
@@ -22,9 +23,20 @@ public class NewsFeedController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
-        IQueryable<NewsPost> newsPosts = _databaseContext.NewsPosts.AsNoTracking();
+        User user = HttpContext.GetItem<User>("User");
+
+        User dbUser =
+            await _databaseContext.Users.FirstAsync(u => u.UniversallyUniqueIdentifier == user.UniversallyUniqueIdentifier);
+        
+        IQueryable<NewsPost> newsPosts = _databaseContext.NewsPosts;
+
+        foreach (NewsPost post in newsPosts)
+        {
+            post.IsLiked = dbUser?.LikePosts?.Contains(post) ?? false;
+        }
+
         return Ok(newsPosts);
     }
     
@@ -53,11 +65,26 @@ public class NewsFeedController : ControllerBase
     [HttpPut("Likes")]
     public async Task<IActionResult> EditLikes([FromQuery] int postId, int likesCount)
     {
+        User user = HttpContext.GetItem<User>("User");
+        Console.WriteLine(user.Id);
+        
+        User dbUser = await _databaseContext.Users.FirstAsync(u =>
+                u.UniversallyUniqueIdentifier == user.UniversallyUniqueIdentifier);
+
         NewsPost newsPost = await _databaseContext.NewsPosts.FirstOrDefaultAsync(n => n.Id == postId) ??
                             throw new NullReferenceException();
 
+        dbUser.LikePosts ??= new();
+        
+        if (likesCount > newsPost.LikesCount)
+            dbUser.LikePosts.Add(newsPost);
+        else
+            dbUser.LikePosts.Remove(newsPost);
+        
         newsPost.LikesCount = likesCount;
-        _databaseContext.Update(newsPost);
+        
+        _databaseContext.NewsPosts.Update(newsPost);
+        _databaseContext.Users.Update(dbUser);
         await _databaseContext.SaveChangesAsync();
 
         return Ok(newsPost);
