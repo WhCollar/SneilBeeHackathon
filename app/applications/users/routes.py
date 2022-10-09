@@ -109,9 +109,6 @@ def read_user_me(
 def read_user_me(
     current_user: User = Depends(get_current_active_user),
 ):
-    """
-    Get current user.
-    """
     return current_user
 
 
@@ -120,9 +117,6 @@ async def read_user_by_id(
     user_id: int,
     current_user: User = Depends(get_current_active_user),
 ):
-    """
-    Get a specific user by id.
-    """
     user = await User.get(id=user_id)
     if user == current_user:
         return user
@@ -139,9 +133,6 @@ async def update_user(
     user_in: BaseUserUpdate,
     current_user: User = Depends(get_current_active_superuser),
 ):
-    """
-    Update a user.
-    """
     user = await User.get(id=user_id)
     if not user:
         raise HTTPException(

@@ -1,18 +1,17 @@
-# Базовый шаблон FastAPI
-### Включает в себя
+# SnailBee
+### Нашь проект влкючает
 #### - FastAPI
 #### - TortoiseORM
 #### - Aerich
 #### - User model + JWT auth
-#### - Registration + password reset emails
+#### - Registration + password reset email
+#### - Files + password reset email
 #### - Logging to files
-#### - Celery
 #### - Alpine Dockerfile
 #### - Docker-compose files
-#### - NGINX + certbot
 
 # Установка
-#### Скопировать template.config.py -> config.py и заполнить
+#### Скопировать .env -> .env и заполнить
 #### Прописать все app в config.applications (django style). Поиск моделей будет происходить по пути app.applications.APP_NAME.models
 #### Сгенерировать SECRET_KEY ( можно командой `openssl rand -hex 32`)
-#### Так-же можно сгенерить сертификаты скриптом из репы ( #TODO гайд )
+#### Запуск всего проекта производиться командой docker compose up

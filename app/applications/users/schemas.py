@@ -35,7 +35,8 @@ class BaseUser(BaseProperties):
     email: Optional[EmailStr] = None
     username: Optional[str] = None
     role: UserRole = UserRole.employee
-    badge_id: int
+    status: str
+    badge_id: int = None
     is_active: Optional[bool] = True
     is_superuser: Optional[bool] = False
     created_at: Optional[datetime]
@@ -52,6 +53,7 @@ class BaseUserCreate(BaseProperties):
     private_wallet_key: str
     badge_id: int = None
     role: UserRole = UserRole.employee
+    status: str
 
 
 class BaseUserUpdate(BaseProperties):
@@ -62,6 +64,7 @@ class BaseUserUpdate(BaseProperties):
     username: Optional[str]
     badge_id: int
     role: UserRole = UserRole.employee
+    status: str
 
 
 class BaseUserDB(BaseUser):

@@ -20,6 +20,7 @@ class User(BaseDBModel, BaseCreatedUpdatedAtModel, UUIDDBModel):
     badge_id = fields.IntField()
     last_login = fields.DatetimeField(null=True)
     role = fields.CharField(max_length=256)
+    status = fields.CharField(max_length=256, null=True)
     is_active = fields.BooleanField(default=True)
     is_superuser = fields.BooleanField(default=False)
 

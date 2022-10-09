@@ -9,5 +9,3 @@ async def send_ruble(send_data: SendRuble):
         async with session.post(url, data=send_data.json()) as response:
             return TransactionHash.parse_raw(await response.text())
 
-
-

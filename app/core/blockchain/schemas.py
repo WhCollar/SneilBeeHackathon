@@ -45,5 +45,11 @@ class NFTBalance(BaseModel):
     balance: list[NFT]
 
 
+class NFTCollectionData(BaseModel):
+    toPublicKey: str
+    uri: str
+    nftCount: int
+
+
 class TransactionHash(BaseModel):
     transactionHash: Optional[str]
