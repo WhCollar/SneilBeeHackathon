@@ -16,12 +16,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 body {
-  line-height: 1;
+  background: linear-gradient(90deg, #422F99 0%, #A4BBFB 100%);
+  color: #9E9E9E;
   font-family: 'Roboto';
+  font-style: normal;
   font-weight: 400;
-  letter-spacing: 1px;
-  font-size: 20px;
-  background-color: #F3F7FA;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 ol, ul {
