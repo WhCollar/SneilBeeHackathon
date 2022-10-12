@@ -4,6 +4,7 @@ export const PATH = {
   main: '/',
   quests: '/quests',
   marketplace: '/marketplace',
+  profile: '/profile',
 };
 
 const WIDTH = 'none';
@@ -27,3 +28,10 @@ export const PAGES = [{
   margin: '0 0 0 20px',
   path: PATH.marketplace,
 }];
+
+export const PROFILE = {
+  name: 'Профиль',
+  width: WIDTH,
+  margin: '0 40px',
+  path: PATH.profile,
+};

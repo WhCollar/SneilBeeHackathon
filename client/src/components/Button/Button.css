@@ -34,6 +34,7 @@ button:hover {
 .light-active:hover {
   background: rgba(255, 255, 255, 0.6);
   color: #FFFFFF;
+  transform: translateY(-5px);
 }
 
 .light {
@@ -45,4 +46,5 @@ button:hover {
 .light:hover {
   background-color: #FFFFFF;
   color: #422F99;
+  transform: translateY(-5px);
 }
