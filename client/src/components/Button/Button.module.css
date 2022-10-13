@@ -1,5 +1,5 @@
 button {
-  height: 46px;
+  height: 40px;
   padding: 0 20px;
 
   border-radius: 50vh;
@@ -13,6 +13,7 @@ button {
 
 button:hover {
   cursor: pointer;
+  transform: translateY(-5px);
 }
 
 .gradient {
@@ -25,16 +26,14 @@ button:hover {
   background-position: right;
 }
 
-.light-active {
+.lightActive {
   background-color: #FFFFFF;
   color: #422F99;
   box-shadow: 0px 4px 20px rgba(62, 62, 62, 0.2);
 }
 
-.light-active:hover {
-  background: rgba(255, 255, 255, 0.6);
-  color: #FFFFFF;
-  transform: translateY(-5px);
+.lightActive:hover {
+  transform: none;
 }
 
 .light {
@@ -46,5 +45,4 @@ button:hover {
 .light:hover {
   background-color: #FFFFFF;
   color: #422F99;
-  transform: translateY(-5px);
 }

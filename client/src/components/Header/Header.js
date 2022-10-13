@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Navigation from '../Navigation/Navigation';
-import UserMenu from '../UserMenu/UserMenu';
-import './Header.css';
+import UserNav from '../UserNav/UserNav';
+import style from './Header.module.css';
 
 export default function Header() {
   return (
     <header>
       <Navigation />
-      <UserMenu />
+      <UserNav />
     </header>
   );
 }

@@ -1,14 +1,14 @@
-.user-menu {
+.userNav {
   display: flex;
   position: relative;
   align-items: center;
 }
 
-.user-icon {
+.userIcon {
   background-color: #FFFFFF;
 
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 
   box-shadow: 0px 4px 20px rgba(62, 62, 62, 0.2);
@@ -16,6 +16,10 @@
   transition: .5s;
 }
 
-.user-icon:hover {
+.userIcon:hover {
   transform: translateY(-5px);
+}
+
+.deactive:hover {
+  transform: none;
 }

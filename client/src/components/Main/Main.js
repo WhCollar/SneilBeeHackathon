@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '../Button/Button';
-import './Main.css';
+import style from './Main.module.css';
 
 export default function Main() {
   return (
