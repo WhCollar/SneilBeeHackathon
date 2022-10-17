@@ -1,10 +1,18 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import profile from '../icons/profile.svg';
+import settings from '../icons/settings.svg';
+import reg from '../icons/reg.svg';
+import login from '../icons/login.svg';
+import logout from '../icons/logout.svg';
+
 export const PATH = {
   main: '/',
   quests: '/quests',
   marketplace: '/marketplace',
   profile: '/profile',
+  settings: '/settings',
+
 };
 
 const WIDTH = 'none';
@@ -35,3 +43,32 @@ export const PROFILE = {
   margin: '0 20px',
   path: PATH.profile,
 };
+
+export const USER_MENU = [{
+  id: uuidv4(),
+  name: 'Профиль',
+  icon: profile,
+  auth: true,
+  path: PATH.profile,
+}, {
+  id: uuidv4(),
+  name: 'Настройки',
+  icon: settings,
+  auth: true,
+  path: PATH.settings,
+}, {
+  id: uuidv4(),
+  name: 'Регистрация',
+  icon: reg,
+  auth: false,
+}, {
+  id: uuidv4(),
+  name: 'Вход',
+  icon: login,
+  auth: false,
+}, {
+  id: uuidv4(),
+  name: 'Выход',
+  icon: logout,
+  auth: true,
+}];
