@@ -5,9 +5,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import style from './UserNav.module.css';
 import UserMenu from '../UserMenu/UserMenu';
 import { useDispatch, useSelector } from 'react-redux';
-import { userMenuOpen } from '../../store/app/actionsCreators';
+import { userMenuChangeState } from '../../store/app/actionsCreators';
 
-export default function UserNav() {
+export default function UserNav({ userMenuRef }) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,10 +16,10 @@ export default function UserNav() {
 
   const handleClick = React.useCallback((path) => navigate(path), [navigate]);
 
-  const handleUserMenuOpen = () => dispatch(userMenuOpen());
+  const handleUserMenuOpen = () => dispatch(userMenuChangeState());
 
   return (
-    <div className={style.userNav}>
+    <div className={style.userNav} ref={userMenuRef}>
       <Button
         type={PROFILE.path === pathname ? 'lightActive' : 'light'}
         margin={PROFILE.margin}
@@ -27,9 +27,10 @@ export default function UserNav() {
       >
         {PROFILE.name}
       </Button>
-      {/* TODO: При открытии меню пользователя иконка должна либо перестать ховериться либо зависнуть в верхнем положении ховера */}
-      {/* TODO: Также нужно решить проблему с тем, что если меню уже открыто при нажатии на иконку оно закрывается и открывается заново, а должно просто закрыться */}
-      <div className={style.userIcon} onClick={handleUserMenuOpen}>
+      <div
+        className={userMenuActive ? style.userIconDeactive : style.userIcon}
+        onClick={handleUserMenuOpen}
+      >
       </div>
       {userMenuActive && <UserMenu />}
     </div>

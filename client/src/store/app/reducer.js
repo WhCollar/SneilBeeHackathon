@@ -1,6 +1,7 @@
 import {
   USER_MENU_OPEN,
   USER_MENU_CLOSE,
+  USER_MENU_CHANGE_STATE,
 } from './actionsTypes';
 
 const initialState = {
@@ -14,6 +15,9 @@ export default function listReducer(state = initialState, action) {
     }
     case USER_MENU_CLOSE: {
       return { ...state, userMenuActive: false };
+    }
+    case USER_MENU_CHANGE_STATE: {
+      return { ...state, userMenuActive: !state.userMenuActive };
     }
 
 
