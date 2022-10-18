@@ -11,8 +11,9 @@ import Quests from './components/Quests/Quests';
 import Marketplace from './components/Marketplace/Marketplace';
 
 import store from "./store";
-import { PATH, PROFILE } from './assets/data/pages';
+import { PATH } from './assets/data/pages';
 import Profile from './components/Profile/Profile';
+import Settings from './components/Settings/Settings';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,7 +26,8 @@ root.render(
             <Route index element={<Main />} />
             <Route path={PATH.quests} element={<Quests />} />
             <Route path={PATH.marketplace} element={<Marketplace />} />
-            <Route path={PROFILE.path} element={<Profile />} />
+            <Route path={PATH.profile} element={<Profile />} />
+            <Route path={PATH.settings} element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>

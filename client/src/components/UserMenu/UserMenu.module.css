@@ -21,11 +21,12 @@
 
 li {
   display: flex;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 li:hover {
   background-color: #F0F2F8;
+  cursor: pointer;
 }
 
 .menuButton {
@@ -36,7 +37,7 @@ img {
   width: 20px;
   height: 20px;
 
-  margin: 20px 0 20px 20px;
+  margin: 22px 0 20px 20px;
 }
 
 p {

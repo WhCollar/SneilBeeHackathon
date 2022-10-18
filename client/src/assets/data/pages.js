@@ -37,38 +37,39 @@ export const PAGES = [{
   path: PATH.marketplace,
 }];
 
-export const PROFILE = {
-  name: 'Профиль',
-  width: WIDTH,
-  margin: '0 20px',
-  path: PATH.profile,
-};
-
 export const USER_MENU = [{
   id: uuidv4(),
   name: 'Профиль',
   icon: profile,
   auth: true,
+  type: 'navigate',
   path: PATH.profile,
 }, {
   id: uuidv4(),
   name: 'Настройки',
   icon: settings,
   auth: true,
+  type: 'navigate',
   path: PATH.settings,
 }, {
   id: uuidv4(),
   name: 'Регистрация',
   icon: reg,
   auth: false,
+  type: 'open-popup',
+  content: 'registration',
 }, {
   id: uuidv4(),
   name: 'Вход',
   icon: login,
   auth: false,
+  type: 'open-popup',
+  content: 'login',
 }, {
   id: uuidv4(),
   name: 'Выход',
   icon: logout,
   auth: true,
+  type: 'dispatch',
+  content: 'logout',
 }];

@@ -5,9 +5,14 @@ import style from './App.module.css';
 import Header from '../Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { userMenuClose } from '../../store/app/actionsCreators';
+import Popup from '../Popup/Popup';
+import Login from '../Login/Login';
+import Registration from '../Registration/Registration';
 
 export default function App() {
   const dispatch = useDispatch();
+
+  const popupContentType = useSelector(state => state.app.popupContentType);
 
   const userMenuRef = React.useRef();
 
@@ -34,6 +39,11 @@ export default function App() {
       <div className={style.pageContainer}>
         <Outlet />
       </div>
+
+      <Popup>
+        {popupContentType === 'login' && <Login />}
+        {popupContentType === 'registration' && <Registration />}
+      </Popup>
 
       <Footer />
     </div>
