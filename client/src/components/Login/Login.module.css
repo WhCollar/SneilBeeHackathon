@@ -1,0 +1,12 @@
+.loginContainer {
+  display: flex;
+}
+
+.loginText {
+
+}
+
+.loginFormContainer {
+  display: flex;
+  flex-direction: column;
+}

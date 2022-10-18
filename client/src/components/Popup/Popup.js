@@ -6,6 +6,8 @@ export default function Popup({ children }) {
   const dispatch = useDispatch();
   const isPopupActive = useSelector(state => state.app.popupActive);
 
+  // TODO: Понять как убрать прокрутку страницы при открытии модального окна
+
   return (
     <div
       className={`popup ${isPopupActive ? 'active' : ''}`}
