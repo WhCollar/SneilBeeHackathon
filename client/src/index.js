@@ -14,6 +14,7 @@ import store from "./store";
 import { PATH } from './assets/data/pages';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
+import Login from './components/Login/Login';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -28,6 +29,7 @@ root.render(
             <Route path={PATH.marketplace} element={<Marketplace />} />
             <Route path={PATH.profile} element={<Profile />} />
             <Route path={PATH.settings} element={<Settings />} />
+            <Route path='/auth' element={<Login />} />
           </Route>
         </Routes>
       </BrowserRouter>

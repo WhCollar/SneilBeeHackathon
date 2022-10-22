@@ -1,15 +1,14 @@
 .input {
-  /* box-sizing: border-box; */
   height: 40px;
   border-radius: 20px;
   border: none;
 
   padding: 0 20px;
   
-  color: #9E9E9E;
+  color: #6d6d6d;
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 20px;
   line-height: 24px;
 }
@@ -17,4 +16,5 @@
 .input:active, .input:hover, .input:focus {
   outline: 0;
   outline-offset: 0;
+  box-shadow: 0px 4px 20px rgba(158, 158, 158, 0.2);
 }

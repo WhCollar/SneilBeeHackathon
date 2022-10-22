@@ -1,9 +1,21 @@
 .loginContainer {
-  display: flex;
+  text-align: center;
+  color: #6d6d6d;
 }
 
-.loginText {
+h2 {
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 23px;
+}
 
+p {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  text-align: start;
+  padding: 10px 0 10px 10px;
+  font-size: 18px;
 }
 
 .loginFormContainer {

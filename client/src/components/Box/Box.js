@@ -2,7 +2,7 @@ import * as React from 'react';
 import style from './Box.module.css';
 
 export default function Box({ children, width, height, color, margin }) {
-  const background = color === 'gray' ? '#F0F2F8' : '#FFFFFF';
+  const background = color === 'gray' ? '#f5f7fa' : '#FFFFFF';
 
   return (
     <div
