@@ -16,8 +16,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 body {
-  background: linear-gradient(90deg, #422F99 0%, #A4BBFB 100%);
-  color: #9E9E9E;
+  background: linear-gradient(90deg, #c3cfe2 0%, #f5f7fa 100%);
+  color: #6d6d6d;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;

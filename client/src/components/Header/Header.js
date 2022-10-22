@@ -6,8 +6,11 @@ import style from './Header.module.css';
 export default function Header({ userMenuRef }) {
   return (
     <header>
-      <Navigation />
-      <UserNav userMenuRef={userMenuRef} />
+      <h1 className={style.logo}>ListPicker</h1>
+      <div className={style.navContainer}>
+        <Navigation />
+        <UserNav userMenuRef={userMenuRef} />
+      </div>
     </header>
   );
 }

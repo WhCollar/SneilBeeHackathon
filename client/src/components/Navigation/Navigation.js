@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { PAGES } from '../../assets/data/pages';
 import Button from '../Button/Button';
+// eslint-disable-next-line no-unused-vars
 import style from './Navigation.module.css';
 
 export default function Navigation() {

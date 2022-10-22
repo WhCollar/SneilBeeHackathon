@@ -1,7 +1,20 @@
 header {
+  padding: 40px 20vw;
+}
+
+.logo {
+  font-family: 'Roboto Serif';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 47px;
+  color: #FFFFFF;
+
+  margin-bottom: 20px;
+}
+
+.navContainer {
   display: flex;
   justify-content: space-between;
-  padding: 0 20vw;
   align-items: center;
-  height: 160px;
 }

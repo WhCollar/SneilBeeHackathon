@@ -33,7 +33,7 @@ export default function App() {
   }, [dispatch, userMenuActive]);
 
   return (
-    <div>
+    <React.Fragment>
       <Header userMenuRef={userMenuRef} />
 
       <div className={style.pageContainer}>
@@ -46,6 +46,6 @@ export default function App() {
       </Popup>
 
       <Footer />
-    </div>
+    </React.Fragment>
   );
 }
