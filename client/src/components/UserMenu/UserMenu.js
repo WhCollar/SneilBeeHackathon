@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { USER_MENU } from '../../assets/data/pages';
-import { activatePopup, getContentType, userMenuClose } from '../../store/app/actionsCreators';
+import { userMenuClose } from '../../store/app/actionsCreators';
 import style from './UserMenu.module.css';
 
 export default function UserMenu() {
@@ -11,10 +11,6 @@ export default function UserMenu() {
 
   const handleUserMenuAction = (type, path, content) => {
     if (type === 'navigate') navigate(path);
-    if (type === 'open-popup') {
-      dispatch(getContentType(content));
-      dispatch(activatePopup());
-    }
     if (type === 'dispatch') {
       // TODO: Тут нужно докрутить кнопку выхода
     }

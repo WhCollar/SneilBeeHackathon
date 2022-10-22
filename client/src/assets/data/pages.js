@@ -52,20 +52,6 @@ export const USER_MENU = [{
   path: PATH.settings,
 }, {
   id: uuidv4(),
-  name: 'Регистрация',
-  icon: reg,
-  auth: false,
-  type: 'open-popup',
-  content: 'registration',
-}, {
-  id: uuidv4(),
-  name: 'Вход',
-  icon: login,
-  auth: false,
-  type: 'open-popup',
-  content: 'login',
-}, {
-  id: uuidv4(),
   name: 'Выход',
   icon: logout,
   auth: true,

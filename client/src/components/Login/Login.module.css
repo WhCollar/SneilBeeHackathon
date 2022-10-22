@@ -3,13 +3,13 @@
   color: #6d6d6d;
 }
 
-h2 {
+.title {
   font-weight: 300;
   font-size: 36px;
   line-height: 23px;
 }
 
-p {
+.text {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;

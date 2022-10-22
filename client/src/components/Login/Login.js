@@ -3,8 +3,12 @@ import style from './Login.module.css';
 import Box from '../Box/Box';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
+import { useDispatch } from 'react-redux';
+import { activatePopup, getContentType } from '../../store/app/actionsCreators';
 
 export default function Login() {
+  const dispatch = useDispatch();
+
   const [login, setLogin] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -12,14 +16,14 @@ export default function Login() {
     if (login.trim() && password.trim()) {
       console.log(login, password);
     } else {
-      
+      // TODO: Добавить логику вывода ошибки входа
     }
   }, [login, password]);
 
   return (
     <div className={style.loginContainer}>
 
-      <h2>Вход</h2>
+      <h2 className={style.title}>Вход</h2>
 
       <div className={style.loginFormContainer}>
 
@@ -56,12 +60,16 @@ export default function Login() {
 
         <Box width='400px' color='gray'>
 
-          <p>Еще нет аккаунта?</p>
+          <p className={style.text}>Еще нет аккаунта?</p>
 
           <Button
             type='gradient'
             width='360px'
             margin='0 20px 20px 20px'
+            handleClick={() => {
+              dispatch(getContentType('registration'));
+              dispatch(activatePopup());
+            }}
           >Зарегистрироваться</Button>
 
         </Box>

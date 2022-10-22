@@ -6,7 +6,6 @@ import Header from '../Header/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { userMenuClose } from '../../store/app/actionsCreators';
 import Popup from '../Popup/Popup';
-import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
 
 export default function App() {
@@ -41,7 +40,6 @@ export default function App() {
       </div>
 
       <Popup>
-        {popupContentType === 'login' && <Login />}
         {popupContentType === 'registration' && <Registration />}
       </Popup>
 
